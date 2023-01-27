@@ -1,0 +1,163 @@
+                        .module main.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile ./main.c
+                        .area data(ram, con, rel)
+ 0000                   .dbfile ./main.c
+ 0000           _code::
+ 0000                   .blkb 1
+                        .area idata(rom,lit)
+ 0000 00                .byte 0
+                        .area data(ram, con, rel)
+ 0001                   .dbfile ./main.c
+ 0001                   .dbfile C:\Users\revecom\Desktop\PSOC\TestLed2\TestLed2\TestLed2\main.c
+ 0001                   .dbsym e code _code c
+ 0001           _cols::
+ 0001                   .blkb 1
+                        .area idata(rom,lit)
+ 0001 00                .byte 0
+                        .area data(ram, con, rel)
+ 0002                   .dbfile C:\Users\revecom\Desktop\PSOC\TestLed2\TestLed2\TestLed2\main.c
+ 0002                   .dbsym e cols _cols c
+ 0002           _rows::
+ 0002                   .blkb 1
+                        .area idata(rom,lit)
+ 0002 00                .byte 0
+                        .area data(ram, con, rel)
+ 0003                   .dbfile C:\Users\revecom\Desktop\PSOC\TestLed2\TestLed2\TestLed2\main.c
+ 0003                   .dbsym e rows _rows c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile C:\Users\revecom\Desktop\PSOC\TestLed2\TestLed2\TestLed2\main.c
+ 0000                   .dbfunc e main _main fV
+ 0000           _main::
+ 0000                   .dbline -1
+ 0000                   .dbline 48
+ 0000           ; /*
+ 0000           ; //----------------------------------------------------------------------------
+ 0000           ; // C main line
+ 0000           ; //----------------------------------------------------------------------------
+ 0000           ; 
+ 0000           ; #include <m8c.h>        // part specific constants and macros
+ 0000           ; #include "PSoCAPI.h"    // PSoC API definitions for all User Modules
+ 0000           ; char code=0;
+ 0000           ; char cols=0;
+ 0000           ; char rows=0;
+ 0000           ; //|--18--|--14--|--12--|--11--|
+ 0000           ; 
+ 0000           ; //|--28--|--24--|--22--|--21--|
+ 0000           ; 
+ 0000           ; //|--48--|--44--|--42--|--41--|
+ 0000           ; 
+ 0000           ; //|--88--|--84--|--82--|--81--|
+ 0000           ; void main(){
+ 0000           ; LED_1_Start();
+ 0000           ; //initialise port4 a 0//
+ 0000           ; PRT4DR=0x0f;
+ 0000           ; rows=PRT4DR;
+ 0000           ; PRT4DR=0xf0;
+ 0000           ; cols=PRT4DR;
+ 0000           ; code=rows & cols ;
+ 0000           ; while (1){
+ 0000           ; switch (code) {
+ 0000           ; case 0x18 : LED_1_Switch(1);  
+ 0000           ; break;
+ 0000           ; default : LED_1_Switch(0);
+ 0000           ; }
+ 0000           ; rows=PRT4DR;
+ 0000           ; cols=PRT4DR;
+ 0000           ; code=rows & cols ;    
+ 0000           ; }     
+ 0000           ; }
+ 0000           ; */
+ 0000           ; //----------------------------------------------------------------------------
+ 0000           ; // C main line
+ 0000           ; //----------------------------------------------------------------------------
+ 0000           ; 
+ 0000           ; #include <m8c.h>        // part specific constants and macros
+ 0000           ; #include "PSoCAPI.h"    // PSoC API definitions for all User Modules
+ 0000           ; char code=0;
+ 0000           ; char cols=0;
+ 0000           ; char rows=0;
+ 0000           ; 
+ 0000           ; void main(){
+ 0000                   .dbline 49
+ 0000           ; LED_1_Start();
+ 0000 10                push X
+ 0001 7C0000            xcall _LED_1_Start
+ 0004 20                pop X
+ 0005                   .dbline 51
+ 0005           ; //initialise port4 a 0//
+ 0005           ; PRT4DR=0x0f;
+ 0005 62100F            mov REG[0x10],15
+ 0008                   .dbline 52
+ 0008           ; rows=PRT4DR;
+ 0008 5D10              mov A,REG[0x10]
+ 000A 5302              mov [_rows],A
+ 000C                   .dbline 53
+ 000C           ; PRT4DR=0xf0;
+ 000C 6210F0            mov REG[0x10],-16
+ 000F                   .dbline 54
+ 000F           ; cols=PRT4DR;
+ 000F 5D10              mov A,REG[0x10]
+ 0011 5301              mov [_cols],A
+ 0013                   .dbline 55
+ 0013           ; code=rows & cols ;
+ 0013 5102              mov A,[_rows]
+ 0015 2201              and A,[_cols]
+ 0017 5300              mov [_code],A
+ 0019 8027              xjmp L3
+ 001B           L2:
+ 001B                   .dbline 56
+ 001B           ; while (1){
+ 001B                   .dbline 58
+ 001B           ; // b1 tcha3l w b2 tfai
+ 001B           ; if (code == 0x18){
+ 001B 3C0018            cmp [_code],24
+ 001E B008              jnz L5
+ 0020                   .dbline 59
+ 0020           ;       LED_1_Switch(1);        
+ 0020                   .dbline 59
+ 0020 10                push X
+ 0021 5001              mov A,1
+ 0023 7C0000            xcall _LED_1_Switch
+ 0026 20                pop X
+ 0027                   .dbline 60
+ 0027           ; }
+ 0027           L5:
+ 0027                   .dbline 61
+ 0027           ; if (code == 0x14){
+ 0027 3C0014            cmp [_code],20
+ 002A B008              jnz L7
+ 002C                   .dbline 62
+ 002C           ;       LED_1_Switch(0);
+ 002C                   .dbline 62
+ 002C 10                push X
+ 002D 5000              mov A,0
+ 002F 7C0000            xcall _LED_1_Switch
+ 0032 20                pop X
+ 0033                   .dbline 63
+ 0033           ; }
+ 0033           L7:
+ 0033                   .dbline 64
+ 0033           ; rows=PRT4DR;
+ 0033 5D10              mov A,REG[0x10]
+ 0035 5302              mov [_rows],A
+ 0037                   .dbline 65
+ 0037           ; cols=PRT4DR;
+ 0037 5D10              mov A,REG[0x10]
+ 0039 5301              mov [_cols],A
+ 003B                   .dbline 66
+ 003B           ; code=rows & cols ;    
+ 003B 5102              mov A,[_rows]
+ 003D 2201              and A,[_cols]
+ 003F 5300              mov [_code],A
+ 0041                   .dbline 67
+ 0041           ; }     
+ 0041           L3:
+ 0041                   .dbline 56
+ 0041 8FD9              xjmp L2
+ 0043           X0:
+ 0043                   .dbline -2
+ 0043           L1:
+ 0043                   .dbline 0 ; func end
+ 0043 8FFF              jmp .
+ 0045                   .dbend

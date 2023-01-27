@@ -1,0 +1,324 @@
+                        .module main.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile ./main.c
+ 0000                   .dbfile C:\Users\revecom\Desktop\PSOC\TestLed1\TestLed1\TestLed1\main.c
+ 0000                   .dbfunc e main _main fV
+ 0000           ;              i -> X+0
+ 0000           _main::
+ 0000                   .dbline -1
+ 0000 10                push X
+ 0001 4F                mov X,SP
+ 0002 3802              add SP,2
+ 0004                   .dbline 10
+ 0004           ; //----------------------------------------------------------------------------
+ 0004           ; // C main line
+ 0004           ; //----------------------------------------------------------------------------
+ 0004           ; 
+ 0004           ; #include <m8c.h>        // part specific constants and macros
+ 0004           ; #include "PSoCAPI.h"    // PSoC API definitions for all User Modules
+ 0004           ; 
+ 0004           ; 
+ 0004           ; void main(void)
+ 0004           ; {
+ 0004                   .dbline 11
+ 0004           ;       int i=0;
+ 0004 560100            mov [X+1],0
+ 0007 560000            mov [X+0],0
+ 000A                   .dbline 12
+ 000A           ;       LED_1_Start(); //initialise led1 , ay modeule nestamlou lewm esmou baed start
+ 000A 10                push X
+ 000B 7C0000            xcall _LED_1_Start
+ 000E                   .dbline 13
+ 000E           ;       LED_2_Start();
+ 000E 7C0000            xcall _LED_2_Start
+ 0011                   .dbline 14
+ 0011           ;       LED_3_Start();
+ 0011 7C0000            xcall _LED_3_Start
+ 0014                   .dbline 15
+ 0014           ;       LED_4_Start();
+ 0014 7C0000            xcall _LED_4_Start
+ 0017                   .dbline 16
+ 0017           ;       LED_5_Start();
+ 0017 7C0000            xcall _LED_5_Start
+ 001A                   .dbline 17
+ 001A           ;       LED_6_Start();
+ 001A 7C0000            xcall _LED_6_Start
+ 001D                   .dbline 18
+ 001D           ;       LED_7_Start();
+ 001D 7C0000            xcall _LED_7_Start
+ 0020                   .dbline 19
+ 0020           ;       LED_8_Start();
+ 0020 7C0000            xcall _LED_8_Start
+ 0023 20                pop X
+ 0024 8114              xjmp L3
+ 0026           L2:
+ 0026                   .dbline 20
+ 0026           ;       while (1){
+ 0026                   .dbline 21
+ 0026           ;       LED_1_Switch(1);  //aluumer led1  , kent 0 twali 1 w tant que low high donc 1 tcha3el
+ 0026 10                push X
+ 0027 5001              mov A,1
+ 0029 7C0000            xcall _LED_1_Switch
+ 002C 20                pop X
+ 002D                   .dbline 22
+ 002D           ;       for (i=0;i<5000;i++){
+ 002D 560100            mov [X+1],0
+ 0030 560000            mov [X+0],0
+ 0033           L5:
+ 0033                   .dbline 22
+ 0033                   .dbline 23
+ 0033           ;                       ;
+ 0033                   .dbline 24
+ 0033           ;                               }
+ 0033           L6:
+ 0033                   .dbline 22
+ 0033 7701              inc [X+1]
+ 0035 0F0000            adc [X+0],0
+ 0038                   .dbline 22
+ 0038 5201              mov A,[X+1]
+ 003A 1188              sub A,-120
+ 003C 5200              mov A,[X+0]
+ 003E 3180              xor A,-128
+ 0040 1993              sbb A,(19 ^ 0x80)
+ 0042 CFF0              jc L5
+ 0044           X1:
+ 0044                   .dbline 25
+ 0044           ;       LED_1_Switch(0);
+ 0044 10                push X
+ 0045 5000              mov A,0
+ 0047 7C0000            xcall _LED_1_Switch
+ 004A                   .dbline 26
+ 004A           ;       LED_2_Switch(1);
+ 004A 5001              mov A,1
+ 004C 7C0000            xcall _LED_2_Switch
+ 004F 20                pop X
+ 0050                   .dbline 27
+ 0050           ;       for (i=0;i<5000;i++){
+ 0050 560100            mov [X+1],0
+ 0053 560000            mov [X+0],0
+ 0056           L9:
+ 0056                   .dbline 27
+ 0056                   .dbline 28
+ 0056           ;                       ;
+ 0056                   .dbline 29
+ 0056           ;                                   }
+ 0056           L10:
+ 0056                   .dbline 27
+ 0056 7701              inc [X+1]
+ 0058 0F0000            adc [X+0],0
+ 005B                   .dbline 27
+ 005B 5201              mov A,[X+1]
+ 005D 1188              sub A,-120
+ 005F 5200              mov A,[X+0]
+ 0061 3180              xor A,-128
+ 0063 1993              sbb A,(19 ^ 0x80)
+ 0065 CFF0              jc L9
+ 0067           X2:
+ 0067                   .dbline 30
+ 0067           ;       LED_2_Switch(0);
+ 0067 10                push X
+ 0068 5000              mov A,0
+ 006A 7C0000            xcall _LED_2_Switch
+ 006D                   .dbline 31
+ 006D           ;       LED_3_Switch(1);
+ 006D 5001              mov A,1
+ 006F 7C0000            xcall _LED_3_Switch
+ 0072 20                pop X
+ 0073                   .dbline 32
+ 0073           ;       for (i=0;i<5000;i++){
+ 0073 560100            mov [X+1],0
+ 0076 560000            mov [X+0],0
+ 0079           L13:
+ 0079                   .dbline 32
+ 0079                   .dbline 33
+ 0079           ;                       ;
+ 0079                   .dbline 34
+ 0079           ;                                   }
+ 0079           L14:
+ 0079                   .dbline 32
+ 0079 7701              inc [X+1]
+ 007B 0F0000            adc [X+0],0
+ 007E                   .dbline 32
+ 007E 5201              mov A,[X+1]
+ 0080 1188              sub A,-120
+ 0082 5200              mov A,[X+0]
+ 0084 3180              xor A,-128
+ 0086 1993              sbb A,(19 ^ 0x80)
+ 0088 CFF0              jc L13
+ 008A           X3:
+ 008A                   .dbline 35
+ 008A           ;       LED_3_Switch(0);
+ 008A 10                push X
+ 008B 5000              mov A,0
+ 008D 7C0000            xcall _LED_3_Switch
+ 0090                   .dbline 36
+ 0090           ;       LED_4_Switch(1);
+ 0090 5001              mov A,1
+ 0092 7C0000            xcall _LED_4_Switch
+ 0095 20                pop X
+ 0096                   .dbline 37
+ 0096           ;       for (i=0;i<5000;i++){
+ 0096 560100            mov [X+1],0
+ 0099 560000            mov [X+0],0
+ 009C           L17:
+ 009C                   .dbline 37
+ 009C                   .dbline 38
+ 009C           ;                       ;
+ 009C                   .dbline 39
+ 009C           ;                                   }
+ 009C           L18:
+ 009C                   .dbline 37
+ 009C 7701              inc [X+1]
+ 009E 0F0000            adc [X+0],0
+ 00A1                   .dbline 37
+ 00A1 5201              mov A,[X+1]
+ 00A3 1188              sub A,-120
+ 00A5 5200              mov A,[X+0]
+ 00A7 3180              xor A,-128
+ 00A9 1993              sbb A,(19 ^ 0x80)
+ 00AB CFF0              jc L17
+ 00AD           X4:
+ 00AD                   .dbline 40
+ 00AD           ;       LED_4_Switch(0);
+ 00AD 10                push X
+ 00AE 5000              mov A,0
+ 00B0 7C0000            xcall _LED_4_Switch
+ 00B3                   .dbline 41
+ 00B3           ;       LED_5_Switch(1);
+ 00B3 5001              mov A,1
+ 00B5 7C0000            xcall _LED_5_Switch
+ 00B8 20                pop X
+ 00B9                   .dbline 42
+ 00B9           ;       for (i=0;i<5000;i++){
+ 00B9 560100            mov [X+1],0
+ 00BC 560000            mov [X+0],0
+ 00BF           L21:
+ 00BF                   .dbline 42
+ 00BF                   .dbline 43
+ 00BF           ;                       ;
+ 00BF                   .dbline 44
+ 00BF           ;                                   }
+ 00BF           L22:
+ 00BF                   .dbline 42
+ 00BF 7701              inc [X+1]
+ 00C1 0F0000            adc [X+0],0
+ 00C4                   .dbline 42
+ 00C4 5201              mov A,[X+1]
+ 00C6 1188              sub A,-120
+ 00C8 5200              mov A,[X+0]
+ 00CA 3180              xor A,-128
+ 00CC 1993              sbb A,(19 ^ 0x80)
+ 00CE CFF0              jc L21
+ 00D0           X5:
+ 00D0                   .dbline 45
+ 00D0           ;       LED_5_Switch(0);
+ 00D0 10                push X
+ 00D1 5000              mov A,0
+ 00D3 7C0000            xcall _LED_5_Switch
+ 00D6                   .dbline 46
+ 00D6           ;       LED_6_Switch(1);
+ 00D6 5001              mov A,1
+ 00D8 7C0000            xcall _LED_6_Switch
+ 00DB 20                pop X
+ 00DC                   .dbline 47
+ 00DC           ;       for (i=0;i<5000;i++){
+ 00DC 560100            mov [X+1],0
+ 00DF 560000            mov [X+0],0
+ 00E2           L25:
+ 00E2                   .dbline 47
+ 00E2                   .dbline 48
+ 00E2           ;                       ;
+ 00E2                   .dbline 49
+ 00E2           ;                                   }
+ 00E2           L26:
+ 00E2                   .dbline 47
+ 00E2 7701              inc [X+1]
+ 00E4 0F0000            adc [X+0],0
+ 00E7                   .dbline 47
+ 00E7 5201              mov A,[X+1]
+ 00E9 1188              sub A,-120
+ 00EB 5200              mov A,[X+0]
+ 00ED 3180              xor A,-128
+ 00EF 1993              sbb A,(19 ^ 0x80)
+ 00F1 CFF0              jc L25
+ 00F3           X6:
+ 00F3                   .dbline 50
+ 00F3           ;       LED_6_Switch(0);
+ 00F3 10                push X
+ 00F4 5000              mov A,0
+ 00F6 7C0000            xcall _LED_6_Switch
+ 00F9                   .dbline 51
+ 00F9           ;       LED_7_Switch(1);
+ 00F9 5001              mov A,1
+ 00FB 7C0000            xcall _LED_7_Switch
+ 00FE 20                pop X
+ 00FF                   .dbline 52
+ 00FF           ;       for (i=0;i<5000;i++){
+ 00FF 560100            mov [X+1],0
+ 0102 560000            mov [X+0],0
+ 0105           L29:
+ 0105                   .dbline 52
+ 0105                   .dbline 53
+ 0105           ;                       ;
+ 0105                   .dbline 54
+ 0105           ;                                   }
+ 0105           L30:
+ 0105                   .dbline 52
+ 0105 7701              inc [X+1]
+ 0107 0F0000            adc [X+0],0
+ 010A                   .dbline 52
+ 010A 5201              mov A,[X+1]
+ 010C 1188              sub A,-120
+ 010E 5200              mov A,[X+0]
+ 0110 3180              xor A,-128
+ 0112 1993              sbb A,(19 ^ 0x80)
+ 0114 CFF0              jc L29
+ 0116           X7:
+ 0116                   .dbline 55
+ 0116           ;       LED_7_Switch(0);
+ 0116 10                push X
+ 0117 5000              mov A,0
+ 0119 7C0000            xcall _LED_7_Switch
+ 011C                   .dbline 56
+ 011C           ;       LED_8_Switch(1);
+ 011C 5001              mov A,1
+ 011E 7C0000            xcall _LED_8_Switch
+ 0121 20                pop X
+ 0122                   .dbline 57
+ 0122           ;       for (i=0;i<5000;i++){
+ 0122 560100            mov [X+1],0
+ 0125 560000            mov [X+0],0
+ 0128           L33:
+ 0128                   .dbline 57
+ 0128                   .dbline 58
+ 0128           ;                       ;
+ 0128                   .dbline 59
+ 0128           ;                                   }
+ 0128           L34:
+ 0128                   .dbline 57
+ 0128 7701              inc [X+1]
+ 012A 0F0000            adc [X+0],0
+ 012D                   .dbline 57
+ 012D 5201              mov A,[X+1]
+ 012F 1188              sub A,-120
+ 0131 5200              mov A,[X+0]
+ 0133 3180              xor A,-128
+ 0135 1993              sbb A,(19 ^ 0x80)
+ 0137 CFF0              jc L33
+ 0139           X8:
+ 0139                   .dbline 62
+ 0139           ; 
+ 0139           ;       //tous les led sont connectéés au port0 (8 led)
+ 0139           ; }
+ 0139           L3:
+ 0139                   .dbline 20
+ 0139 8EEC              xjmp L2
+ 013B           X0:
+ 013B                   .dbline -2
+ 013B           L1:
+ 013B 38FE              add SP,-2
+ 013D 20                pop X
+ 013E                   .dbline 0 ; func end
+ 013E 8FFF              jmp .
+ 0140                   .dbsym l i 0 I
+ 0140                   .dbend

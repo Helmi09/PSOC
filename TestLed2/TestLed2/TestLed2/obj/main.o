@@ -1,0 +1,62 @@
+XH
+H 3 areas 6 global symbols
+M main.c
+S _LED_1_Start Ref0000
+S _LED_1_Switch Ref0000
+A text size 45 flags 0
+dbfile ./main.c
+dbfile C:\Users\revecom\Desktop\PSOC\TestLed2\TestLed2\TestLed2\main.c
+dbfunc e main 0 fV
+dbline FFFFFFFF 0
+dbline 30 0
+dbline 31 0
+dbline 33 5
+dbline 34 8
+dbline 35 C
+dbline 36 F
+dbline 37 13
+dbline 38 1B
+dbline 3A 1B
+dbline 3B 20
+dbline 3B 20
+dbline 3C 27
+dbline 3D 27
+dbline 3E 2C
+dbline 3E 2C
+dbline 3F 33
+dbline 40 33
+dbline 41 37
+dbline 42 3B
+dbline 43 41
+dbline 38 41
+dbline FFFFFFFE 43
+dbline 0 43
+S _main Def0000
+A data size 3 flags 20
+dbfile ./main.c
+dbfile C:\Users\revecom\Desktop\PSOC\TestLed2\TestLed2\TestLed2\main.c
+dbsym e code 0 c
+dbsym e cols 1 c
+dbsym e rows 2 c
+S _cols Def0001
+S _rows Def0002
+S _code Def0000
+A idata size 3 flags 1
+T 00 00 00
+R 00 00 00 02
+T 00 01 00
+R 00 00 00 02
+T 00 02 00
+R 00 00 00 02
+T 00 00 10 7C 00 00 20 62 10 0F 5D 10 53 00 02 62
+R 00 00 00 00 02 04 00 00 01 0D 00 01
+T 00 0D 10 F0 5D 10 53 00 01 51 00 02 22 00 01 53
+R 00 00 00 00 01 07 00 01 01 0A 00 01 01 0D 00 01
+T 00 18 00 00 80 27 3C 00 00 18 B0 08 10 50 01 7C
+R 00 00 00 00 01 02 00 01 01 07 00 01
+T 00 24 00 00 20 3C 00 00 14 B0 08 10 50 00 7C
+R 00 00 00 00 02 02 00 01 01 06 00 01
+T 00 30 00 00 20 5D 10 53 00 02 5D 10 53 00 01 51
+R 00 00 00 00 02 02 00 01 01 08 00 01 01 0D 00 01
+T 00 3C 00 02 22 00 01 53 00 00 8F D9 8F FF
+R 00 00 00 00 01 02 00 01 01 05 00 01 01 08 00 01

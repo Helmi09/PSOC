@@ -1,0 +1,152 @@
+XH
+H 1 areas 11 global symbols
+M main.c
+S _LED_1_Start Ref0000
+S _LED_2_Start Ref0000
+S _LED_3_Start Ref0000
+S _LED_4_Start Ref0000
+S _LED_5_Start Ref0000
+S _LED_6_Start Ref0000
+S _LED_7_Start Ref0000
+S _LED_8_Start Ref0000
+S _LED_1_Switch Ref0000
+S _LED_2_Switch Ref0000
+S _LED_3_Switch Ref0000
+S _LED_4_Switch Ref0000
+S _LED_5_Switch Ref0000
+S _LED_6_Switch Ref0000
+S _LED_7_Switch Ref0000
+S _LED_8_Switch Ref0000
+A text size 140 flags 0
+dbfile ./main.c
+dbfile C:\Users\revecom\Desktop\PSOC\TestLed1\TestLed1\TestLed1\main.c
+dbfunc e main 0 fV
+dbsym l i 0 I
+dbline FFFFFFFF 0
+dbline A 4
+dbline B 4
+dbline C A
+dbline D E
+dbline E 11
+dbline F 14
+dbline 10 17
+dbline 11 1A
+dbline 12 1D
+dbline 13 20
+dbline 14 26
+dbline 15 26
+dbline 16 2D
+dbline 16 33
+dbline 17 33
+dbline 18 33
+dbline 16 33
+dbline 16 38
+dbline 19 44
+dbline 1A 4A
+dbline 1B 50
+dbline 1B 56
+dbline 1C 56
+dbline 1D 56
+dbline 1B 56
+dbline 1B 5B
+dbline 1E 67
+dbline 1F 6D
+dbline 20 73
+dbline 20 79
+dbline 21 79
+dbline 22 79
+dbline 20 79
+dbline 20 7E
+dbline 23 8A
+dbline 24 90
+dbline 25 96
+dbline 25 9C
+dbline 26 9C
+dbline 27 9C
+dbline 25 9C
+dbline 25 A1
+dbline 28 AD
+dbline 29 B3
+dbline 2A B9
+dbline 2A BF
+dbline 2B BF
+dbline 2C BF
+dbline 2A BF
+dbline 2A C4
+dbline 2D D0
+dbline 2E D6
+dbline 2F DC
+dbline 2F E2
+dbline 30 E2
+dbline 31 E2
+dbline 2F E2
+dbline 2F E7
+dbline 32 F3
+dbline 33 F9
+dbline 34 FF
+dbline 34 105
+dbline 35 105
+dbline 36 105
+dbline 34 105
+dbline 34 10A
+dbline 37 116
+dbline 38 11C
+dbline 39 122
+dbline 39 128
+dbline 3A 128
+dbline 3B 128
+dbline 39 128
+dbline 39 12D
+dbline 3E 139
+dbline 14 139
+dbline FFFFFFFE 13B
+dbline 0 13E
+S _main Def0000
+T 00 00 10 4F 38 02 56 01 00 56 00 00 10 7C 00 00
+R 00 00 00 00 02 0E 00 00
+T 00 0E 7C 00 00 7C 00 00 7C 00 00 7C
+R 00 00 00 00 02 03 00 01 02 06 00 02 02 09 00 03
+T 00 18 00 00 7C 00 00 7C 00 00 7C
+R 00 00 00 00 02 02 00 04 02 05 00 05 02 08 00 06
+T 00 21 00 00 20 81 14 10 50 01 7C 00 00 20 56 01
+R 00 00 00 00 02 02 00 07 02 0B 00 08
+T 00 2F 00 56 00 00 77 01 0F 00 00 52 01 11 88 52
+R 00 00 00 00
+T 00 3D 00 31 80 19 93 CF F0 10 50 00 7C 00 00 50
+R 00 00 00 00 02 0D 00 08
+T 00 4B 01 7C 00 00 20 56 01 00 56 00 00 77 01 0F
+R 00 00 00 00 02 04 00 09
+T 00 59 00 00 52 01 11 88 52 00 31 80 19 93 CF F0
+R 00 00 00 00
+T 00 67 10 50 00 7C 00 00 50 01 7C 00 00 20 56 01
+R 00 00 00 00 02 06 00 09 02 0B 00 0A
+T 00 75 00 56 00 00 77 01 0F 00 00 52 01 11 88 52
+R 00 00 00 00
+T 00 83 00 31 80 19 93 CF F0 10 50 00 7C 00 00 50
+R 00 00 00 00 02 0D 00 0A
+T 00 91 01 7C 00 00 20 56 01 00 56 00 00 77 01 0F
+R 00 00 00 00 02 04 00 0B
+T 00 9F 00 00 52 01 11 88 52 00 31 80 19 93 CF F0
+R 00 00 00 00
+T 00 AD 10 50 00 7C 00 00 50 01 7C 00 00 20 56 01
+R 00 00 00 00 02 06 00 0B 02 0B 00 0C
+T 00 BB 00 56 00 00 77 01 0F 00 00 52 01 11 88 52
+R 00 00 00 00
+T 00 C9 00 31 80 19 93 CF F0 10 50 00 7C 00 00 50
+R 00 00 00 00 02 0D 00 0C
+T 00 D7 01 7C 00 00 20 56 01 00 56 00 00 77 01 0F
+R 00 00 00 00 02 04 00 0D
+T 00 E5 00 00 52 01 11 88 52 00 31 80 19 93 CF F0
+R 00 00 00 00
+T 00 F3 10 50 00 7C 00 00 50 01 7C 00 00 20 56 01
+R 00 00 00 00 02 06 00 0D 02 0B 00 0E
+T 01 01 00 56 00 00 77 01 0F 00 00 52 01 11 88 52
+R 00 00 00 00
+T 01 0F 00 31 80 19 93 CF F0 10 50 00 7C 00 00 50
+R 00 00 00 00 02 0D 00 0E
+T 01 1D 01 7C 00 00 20 56 01 00 56 00 00 77 01 0F
+R 00 00 00 00 02 04 00 0F
+T 01 2B 00 00 52 01 11 88 52 00 31 80 19 93 CF F0
+R 00 00 00 00
+T 01 39 8E EC 38 FE 20 8F FF
+R 00 00 00 00

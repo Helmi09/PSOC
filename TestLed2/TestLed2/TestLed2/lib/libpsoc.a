@@ -1,0 +1,310 @@
+.start
+XH
+H 3 areas 3 global symbols
+M psocconfigtbl.asm
+A text size 0 flags 0
+dbfile lib/psocconfigtbl.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C27~1/m8c.inc
+dbfunc 0 ? 0 I
+A lit size 4E flags 0
+S LoadConfigTBL_testled2_Bank0 Def0000
+S LoadConfigTBL_testled2_Bank1 Def002B
+A psoc_config size C5 flags 0
+dbfile lib/psocconfigtbl.asm
+dbfunc 0 ? 0 I
+dbline 2 0
+dbline 48 2
+dbline 2 5
+dbline 4A 7
+dbline 4B A
+dbline 2 D
+dbline 4D F
+dbline 4E 12
+dbline 2 15
+dbline 50 17
+dbline 51 1A
+dbline 2 1D
+dbline 53 1F
+dbline 54 22
+dbline 2 25
+dbline 56 27
+dbline 57 2A
+dbline 2 2D
+dbline 59 2F
+dbline 5A 32
+dbline 2 35
+dbline 5C 37
+dbline 5D 3A
+dbline 2 3D
+dbline 5F 3F
+dbline 60 42
+dbline 2 45
+dbline 62 47
+dbline 63 4A
+dbline 2 4D
+dbline 65 4F
+dbline 66 52
+dbline 2 55
+dbline 68 57
+dbline 69 5A
+dbline 2 5D
+dbline 6B 5F
+dbline 6C 62
+dbline 2 65
+dbline 6E 67
+dbline 6F 6A
+dbline 2 6D
+dbline 71 6F
+dbline 72 72
+dbline 2 75
+dbline 74 77
+dbline 75 7A
+dbline 2 7D
+dbline 77 7F
+dbline 78 82
+dbline 2 85
+dbline 7A 87
+dbline 7B 8A
+dbline 2 8D
+dbline 7D 8F
+dbline 7E 92
+dbline 2 95
+dbline 80 97
+dbline 81 9A
+dbline 2 9D
+dbline 83 9F
+dbline 84 A2
+dbline 2 A5
+dbline 86 A7
+dbline 87 AA
+dbline 2 AD
+dbline 89 AF
+dbline 8A B2
+dbline 2 B5
+dbline 8C B7
+dbline 8D BA
+dbline 2 BD
+dbline 8F BF
+dbline 2 C2
+dbline 91 C4
+S LoadConfigTBL_testled2_Ordered Def0000
+T 00 00 60 28 66 00 63 05 65 00 E6 00 E7 00 D6 00
+R 00 00 00 01
+T 00 0E B0 00 B1 00 B2 00 B3 33 B4 33 B5 00 B6 00
+R 00 00 00 01
+T 00 1C B8 55 B9 00 BA 10 BB 33 BC 33 BD 00 BE 00
+R 00 00 00 01
+T 00 2A FF 61 00 69 00 60 00 62 00 67 33 68 33 63
+R 00 00 00 01
+T 00 38 00 66 00 D1 00 D3 00 D0 00 D2 00 E1 FF E2
+R 00 00 00 01
+T 00 46 00 DF FF DE 02 DD 00 FF
+R 00 00 00 01
+T 00 00 70 EF 62 00 00 71 10 62 00 01 62 01 FE 70
+R 00 00 00 02
+T 00 0E EF 62 03 FE 62 02 00 71 10 62 02 00 62 03
+R 00 00 00 02
+T 00 1C 00 70 EF 62 01 00 62 04 00 71 10 62 04 00
+R 00 00 00 02
+T 00 2A 62 05 FF 70 EF 62 07 FF 62 06 00 71 10 62
+R 00 00 00 02
+T 00 38 06 00 62 07 00 70 EF 62 05 00 62 08 00 71
+R 00 00 00 02
+T 00 46 10 62 08 00 62 09 FF 70 EF 62 0B FF 62 0A
+R 00 00 00 02
+T 00 54 00 71 10 62 0A 00 62 0B 00 70 EF 62 09 00
+R 00 00 00 02
+T 00 62 62 0C 00 71 10 62 0C 00 62 0D FF 70 EF 62
+R 00 00 00 02
+T 00 70 0F FF 62 0E 00 71 10 62 0E 00 62 0F 00 70
+R 00 00 00 02
+T 00 7E EF 62 0D 00 62 10 00 71 10 62 10 00 62 11
+R 00 00 00 02
+T 00 8C 00 70 EF 62 13 00 62 12 00 71 10 62 12 00
+R 00 00 00 02
+T 00 9A 62 13 00 70 EF 62 11 00 62 14 00 71 10 62
+R 00 00 00 02
+T 00 A8 14 00 62 15 0F 70 EF 62 17 0F 62 16 00 71
+R 00 00 00 02
+T 00 B6 10 62 16 00 62 17 00 70 EF 62 15 00 70 EF
+R 00 00 00 02
+T 00 C4 7F
+R 00 00 00 02
+.end
+.start
+XH
+H 3 areas B global symbols
+M psocconfig.asm
+S LoadConfigTBL_testled2_Bank0 Ref0000
+S LoadConfigTBL_testled2_Bank1 Ref0000
+S LoadConfigTBL_testled2_Ordered Ref0000
+A text size 0 flags 0
+dbfile lib/psocconfig.asm
+dbfunc 0 ? 0 I
+dbfile ./lib/GlobalParams.inc
+dbfunc 0 ? 0 I
+dbfile lib/psocconfig.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/psocconfig.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C27~1/m8c.inc
+dbfunc 0 ? 0 I
+A psoc_config size 61 flags 0
+dbfile lib/psocconfig.asm
+dbfunc 0 ? 0 I
+dbline 3D 0
+dbline 3F 3
+dbline 40 6
+dbline 44 9
+dbline 5D A
+dbline 2 B
+dbline 5F D
+dbline 60 F
+dbline 62 10
+dbline 63 12
+dbline 64 14
+dbline 66 17
+dbline 67 19
+dbline 69 1A
+dbline 6A 1C
+dbline 6B 1E
+dbline 2 21
+dbline 6E 23
+dbline 71 24
+dbline 87 25
+dbline 88 27
+dbline 89 28
+dbline 8A 29
+dbline 8B 2A
+dbline 8C 2D
+dbline 8D 2F
+dbline 8F 32
+dbline 90 33
+dbline 2 34
+dbline 2 36
+dbline 95 39
+dbline 96 3A
+dbline 97 3B
+dbline 98 3C
+dbline 99 3E
+dbline 9A 40
+dbline 9B 41
+dbline 9C 44
+dbline 2 46
+dbline 9F 48
+dbline A0 4A
+dbline A1 4B
+dbline A2 4C
+dbline A3 4D
+dbline A4 4F
+dbline A5 50
+dbline A6 51
+dbline A7 52
+dbline A8 53
+dbline A9 55
+dbline AA 57
+dbline AB 58
+dbline AC 59
+dbline AD 5A
+dbline AE 5C
+dbline B0 5E
+dbline B2 60
+S LoadConfig_testled2 Def000A
+S LoadConfigInit Def0000
+S _LoadConfig_testled2 Def000A
+S _LoadConfigInit Def0000
+A InterruptRAM size 1 flags 20
+S _NO_SHADOW Def0000
+S _Port_0_Data_SHADE Def0000
+S NO_SHADOW Def0000
+S Port_0_Data_SHADE Def0000
+T 00 00 55 00 00 00 7C 00 0A 7C 00 00 7F 10 70 EF
+R 00 00 00 01 01 03 00 02 00 07 00 01 02 0A 00 02
+T 00 0D 50 00 67 50 00 00 57 00 00 7C 00 25 50 01
+R 00 00 00 01 43 06 00 00 03 09 00 00 00 0C 00 01
+T 00 19 67 50 00 00 57 00 00 7C 00 25 70 EF 20 7F
+R 00 00 00 01 43 04 00 01 03 07 00 01 00 0A 00 01
+T 00 25 38 02 10 08 4F 56 FC 00 D0 04 56 FC 01 18
+R 00 00 00 01
+T 00 33 20 70 EF 62 E3 00 10 08 28 39 FF A0 1F 4F
+R 00 00 00 01
+T 00 41 48 FC 01 A0 03 71 10 54 FD 18 20 75 09 00
+R 00 00 00 01
+T 00 4F 10 08 28 4F 59 FD 61 00 18 20 75 09 00 8F
+R 00 00 00 01
+T 00 5D D7 38 FC 7F
+R 00 00 00 01
+.end
+.start
+XH
+H 2 areas 15 global symbols
+M led_1.asm
+S Port_0_Data_SHADE Ref0000
+A text size 0 flags 0
+dbfile lib/led_1.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/led_1.asm
+dbfunc 0 ? 0 I
+dbfile LED_1.inc
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C27~1/m8c.inc
+dbfunc 0 ? 0 I
+dbfile ./lib/LED_1.inc
+dbfunc 0 ? 0 I
+A UserModules size 28 flags 0
+dbfile lib/led_1.asm
+dbfunc 0 ? 0 I
+dbline 50 0
+dbline 51 2
+dbline 59 4
+dbline 61 6
+dbline 62 8
+dbline 66 A
+dbline 6A D
+dbline 6E F
+dbline 74 12
+dbline 75 14
+dbline 79 16
+dbline 95 17
+dbline 96 1A
+dbline 97 1C
+dbline 9B 1E
+dbline B6 1F
+dbline BC 21
+dbline BD 23
+dbline BE 25
+dbline C3 27
+S $se$_LED_1_On Def0017
+S _LED_1_Start Def0004
+S LED_1_Switch Def0006
+S LED_1_Invert Def0017
+S _LED_1_Off Def0004
+S _LED_1_GetState Def001F
+S $sb$_LED_1_GetState Def001F
+S $se$_LED_1_GetState Def0028
+S LED_1_Stop Def0004
+S LED_1_On Def0000
+S _LED_1_Switch Def0006
+S _LED_1_Invert Def0017
+S $sb$_LED_1_Invert Def0017
+S $se$_LED_1_Invert Def001F
+S _LED_1_Stop Def0004
+S LED_1_Start Def0004
+S LED_1_Off Def0004
+S _LED_1_On Def0000
+S LED_1_GetState Def001F
+S $sb$_LED_1_On Def0000
+T 00 00 50 01 80 03 50 00 29 00 A0 06 2E 00 00 01
+R 00 00 00 01 03 0D 00 00
+T 00 0D 80 04 26 00 00 FE 51 00 00 60 00 7F 36
+R 00 00 00 01 03 05 00 00 03 09 00 00
+T 00 18 00 00 01 51 00 00 60 00 7F 51 00 00 21 01
+R 00 00 00 01 03 02 00 00 03 06 00 00 03 0C 00 00
+T 00 23 A0 03 50 01 7F
+R 00 00 00 01
+.end

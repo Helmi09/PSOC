@@ -1,0 +1,28 @@
+Starting MAKE...
+creating project.mk 
+
+lib/lcd_1.asm
+
+lib/led7seg_1.asm
+
+lib/led7seg_1int.asm
+
+lib/led_bl.asm
+
+lib/psocconfig.asm
+
+lib/psocconfigtbl.asm
+
+./boot.asm
+
+Linking..
+
+  ROM 6% full. 847 out of 16384 bytes used (does not include absolute areas).
+
+  RAM 5% full. 12 bytes used (does not include stack usage).
+
+Built with ICCM8C STD V7.05.00
+
+ 
+TestLed3 - 0 error(s) 0 warning(s) 13:44:27
+
