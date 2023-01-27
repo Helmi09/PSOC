@@ -1,0 +1,369 @@
+                        .module main.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile ./main.c
+                        .area data(ram, con, rel)
+ 0000                   .dbfile ./main.c
+ 0000           _cols::
+ 0000                   .blkb 1
+                        .area idata(rom,lit)
+ 0000 00                .byte 0
+                        .area data(ram, con, rel)
+ 0001                   .dbfile ./main.c
+ 0001                   .dbfile C:\Users\revecom\Desktop\PSOC\PWM\PWM\PWM\main.c
+ 0001                   .dbsym e cols _cols c
+ 0001           _rows::
+ 0001                   .blkb 1
+                        .area idata(rom,lit)
+ 0001 00                .byte 0
+                        .area data(ram, con, rel)
+ 0002                   .dbfile C:\Users\revecom\Desktop\PSOC\PWM\PWM\PWM\main.c
+ 0002                   .dbsym e rows _rows c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile C:\Users\revecom\Desktop\PSOC\PWM\PWM\PWM\main.c
+ 0000                   .dbfunc e Keyboard_State _Keyboard_State fc
+ 0000           _Keyboard_State::
+ 0000                   .dbline -1
+ 0000                   .dbline 10
+ 0000           ; //----------------------------------------------------------------------------
+ 0000           ; // C main line
+ 0000           ; //----------------------------------------------------------------------------
+ 0000           ; 
+ 0000           ; #include <m8c.h>        // part specific constants and macros
+ 0000           ; #include "PSoCAPI.h"    // PSoC API definitions for all User Modules
+ 0000           ; #define PWM_PERIOD     999
+ 0000           ; #define PWM_PULSEWIDTH 332
+ 0000           ; char cols=0,rows=0;
+ 0000           ; char Keyboard_State(void){
+ 0000                   .dbline 11
+ 0000           ;       PRT4DR=0xf0;
+ 0000 6210F0            mov REG[0x10],-16
+ 0003                   .dbline 12
+ 0003           ;       rows=PRT4DR;
+ 0003 5D10              mov A,REG[0x10]
+ 0005 5301              mov [_rows],A
+ 0007                   .dbline 13
+ 0007           ;       PRT4DR=0x0f;
+ 0007 62100F            mov REG[0x10],15
+ 000A                   .dbline 14
+ 000A           ;       cols=PRT4DR;
+ 000A 5D10              mov A,REG[0x10]
+ 000C 5300              mov [_cols],A
+ 000E                   .dbline 15
+ 000E           ;       return (rows & cols); 
+ 000E 5101              mov A,[_rows]
+ 0010 2200              and A,[_cols]
+ 0012                   .dbline -2
+ 0012           L1:
+ 0012                   .dbline 0 ; func end
+ 0012 7F                ret
+ 0013                   .dbend
+ 0013                   .dbfunc e Pmw_Signal_Generation _Pmw_Signal_Generation fV
+ 0013           ;          pulse -> X-11
+ 0013           ;         period -> X-7
+ 0013           _Pmw_Signal_Generation::
+ 0013                   .dbline -1
+ 0013 10                push X
+ 0014 4F                mov X,SP
+ 0015                   .dbline 17
+ 0015           ; }
+ 0015           ; void Pmw_Signal_Generation(long period, long pulse){
+ 0015                   .dbline 19
+ 0015           ;       
+ 0015           ;     PWM16_1_WritePeriod(period);          // Set period
+ 0015 52FC              mov A,[X-4]
+ 0017 5300              mov [__r1],A
+ 0019 52FB              mov A,[X-5]
+ 001B 10                push X
+ 001C 08                push A
+ 001D 5100              mov A,[__r1]
+ 001F 20                pop X
+ 0020 7C0000            xcall _PWM16_1_WritePeriod
+ 0023 20                pop X
+ 0024                   .dbline 20
+ 0024           ;     PWM16_1_WritePulseWidth(pulse);  // Set pulse width to generate a 33%    : 333/999+1 : less than                                          //duty cycle
+ 0024 52F8              mov A,[X-8]
+ 0026 5300              mov [__r1],A
+ 0028 52F7              mov A,[X-9]
+ 002A 10                push X
+ 002B 08                push A
+ 002C 5100              mov A,[__r1]
+ 002E 20                pop X
+ 002F 7C0000            xcall _PWM16_1_WritePulseWidth
+ 0032                   .dbline 21
+ 0032           ;     PWM16_1_Start();
+ 0032 7C0000            xcall _PWM16_1_Start
+ 0035 20                pop X
+ 0036                   .dbline -2
+ 0036           L2:
+ 0036 20                pop X
+ 0037                   .dbline 0 ; func end
+ 0037 7F                ret
+ 0038                   .dbsym l pulse -11 L
+ 0038                   .dbsym l period -7 L
+ 0038                   .dbend
+ 0038                   .dbfunc e main _main fV
+ 0038           _main::
+ 0038                   .dbline -1
+ 0038 10                push X
+ 0039 4F                mov X,SP
+ 003A 3802              add SP,2
+ 003C                   .dbline 27
+ 003C           ;       /*compare type less than so 
+ 003C           ;       duty cycle = pulse/period+1
+ 003C           ;       */
+ 003C           ; }
+ 003C           ; void main(void)
+ 003C           ; {
+ 003C 8128              xjmp L5
+ 003E           L4:
+ 003E                   .dbline 28
+ 003E           ;    while (1){
+ 003E                   .dbline 29
+ 003E           ;       switch ( Keyboard_State() ) {
+ 003E 9FC0              xcall _Keyboard_State
+ 0040 5401              mov [X+1],A
+ 0042 560000            mov [X+0],0
+ 0045 3D0000            cmp [X+0],0
+ 0048 B006              jnz X1
+ 004A 3D0111            cmp [X+1],17
+ 004D A0A1              jz L13
+ 004F           X1:
+ 004F 3D0000            cmp [X+0],0
+ 0052 B006              jnz X2
+ 0054 3D0112            cmp [X+1],18
+ 0057 A07F              jz L12
+ 0059           X2:
+ 0059 3D0000            cmp [X+0],0
+ 005C B006              jnz X3
+ 005E 3D0114            cmp [X+1],20
+ 0061 A05B              jz L11
+ 0063           X3:
+ 0063 3D0000            cmp [X+0],0
+ 0066 B006              jnz X4
+ 0068 3D0118            cmp [X+1],24
+ 006B A037              jz L10
+ 006D           X4:
+ 006D 5201              mov A,[X+1]
+ 006F 1111              sub A,17
+ 0071 5200              mov A,[X+0]
+ 0073 3180              xor A,-128
+ 0075 1980              sbb A,(0 ^ 0x80)
+ 0077 C0ED              jc L7
+ 0079           X5:
+ 0079           L18:
+ 0079 3D0000            cmp [X+0],0
+ 007C B006              jnz X6
+ 007E 3D0121            cmp [X+1],33
+ 0081 A0CB              jz L17
+ 0083           X6:
+ 0083 3D0000            cmp [X+0],0
+ 0086 B006              jnz X7
+ 0088 3D0122            cmp [X+1],34
+ 008B A0AB              jz L16
+ 008D           X7:
+ 008D 3D0000            cmp [X+0],0
+ 0090 B006              jnz X8
+ 0092 3D0124            cmp [X+1],36
+ 0095 A08B              jz L15
+ 0097           X8:
+ 0097 3D0000            cmp [X+0],0
+ 009A B006              jnz X9
+ 009C 3D0128            cmp [X+1],40
+ 009F A067              jz L14
+ 00A1           X9:
+ 00A1 80C3              xjmp L7
+ 00A3           L10:
+ 00A3                   .dbline 31
+ 00A3           ;               case 0x18:
+ 00A3           ;                       Pmw_Signal_Generation(65250,4564); //0.0699
+ 00A3 5000              mov A,0
+ 00A5 08                push A
+ 00A6 08                push A
+ 00A7 5011              mov A,17
+ 00A9 08                push A
+ 00AA 50D4              mov A,-44
+ 00AC 08                push A
+ 00AD 5000              mov A,0
+ 00AF 08                push A
+ 00B0 08                push A
+ 00B1 50FE              mov A,-2
+ 00B3 08                push A
+ 00B4 50E2              mov A,-30
+ 00B6 08                push A
+ 00B7 9F5A              xcall _Pmw_Signal_Generation
+ 00B9 38F8              add SP,-8
+ 00BB                   .dbline 32
+ 00BB           ;                       break;
+ 00BB 80A9              xjmp L8
+ 00BD           L11:
+ 00BD                   .dbline 34
+ 00BD           ;               case 0x14:
+ 00BD           ;                       Pmw_Signal_Generation(65250,10000);//0153
+ 00BD 5000              mov A,0
+ 00BF 08                push A
+ 00C0 08                push A
+ 00C1 5027              mov A,39
+ 00C3 08                push A
+ 00C4 5010              mov A,16
+ 00C6 08                push A
+ 00C7 5000              mov A,0
+ 00C9 08                push A
+ 00CA 08                push A
+ 00CB 50FE              mov A,-2
+ 00CD 08                push A
+ 00CE 50E2              mov A,-30
+ 00D0 08                push A
+ 00D1 9F40              xcall _Pmw_Signal_Generation
+ 00D3 38F8              add SP,-8
+ 00D5                   .dbline 35
+ 00D5           ;                       break;
+ 00D5 808F              xjmp L8
+ 00D7           L12:
+ 00D7                   .dbline 37
+ 00D7           ;               case 0x12:
+ 00D7           ;                       Pmw_Signal_Generation(44250,44);
+ 00D7 5000              mov A,0
+ 00D9 08                push A
+ 00DA 08                push A
+ 00DB 08                push A
+ 00DC 502C              mov A,44
+ 00DE 08                push A
+ 00DF 5000              mov A,0
+ 00E1 08                push A
+ 00E2 08                push A
+ 00E3 50AC              mov A,-84
+ 00E5 08                push A
+ 00E6 50DA              mov A,-38
+ 00E8 08                push A
+ 00E9 9F28              xcall _Pmw_Signal_Generation
+ 00EB 38F8              add SP,-8
+ 00ED                   .dbline 38
+ 00ED           ;                       break;
+ 00ED 8077              xjmp L8
+ 00EF           L13:
+ 00EF                   .dbline 40
+ 00EF           ;               case 0x11:
+ 00EF           ;                       Pmw_Signal_Generation(55250,44);
+ 00EF 5000              mov A,0
+ 00F1 08                push A
+ 00F2 08                push A
+ 00F3 08                push A
+ 00F4 502C              mov A,44
+ 00F6 08                push A
+ 00F7 5000              mov A,0
+ 00F9 08                push A
+ 00FA 08                push A
+ 00FB 50D7              mov A,-41
+ 00FD 08                push A
+ 00FE 50D2              mov A,-46
+ 0100 08                push A
+ 0101 9F10              xcall _Pmw_Signal_Generation
+ 0103 38F8              add SP,-8
+ 0105                   .dbline 41
+ 0105           ;                       break;
+ 0105 805F              xjmp L8
+ 0107           L14:
+ 0107                   .dbline 43
+ 0107           ;               case 0x28:
+ 0107           ;                       Pmw_Signal_Generation(23650,4564);
+ 0107 5000              mov A,0
+ 0109 08                push A
+ 010A 08                push A
+ 010B 5011              mov A,17
+ 010D 08                push A
+ 010E 50D4              mov A,-44
+ 0110 08                push A
+ 0111 5000              mov A,0
+ 0113 08                push A
+ 0114 08                push A
+ 0115 505C              mov A,92
+ 0117 08                push A
+ 0118 5062              mov A,98
+ 011A 08                push A
+ 011B 9EF6              xcall _Pmw_Signal_Generation
+ 011D 38F8              add SP,-8
+ 011F                   .dbline 44
+ 011F           ;                       break;
+ 011F 8045              xjmp L8
+ 0121           L15:
+ 0121                   .dbline 46
+ 0121           ;               case 0x24:
+ 0121           ;                       Pmw_Signal_Generation(250,4);
+ 0121 5000              mov A,0
+ 0123 08                push A
+ 0124 08                push A
+ 0125 08                push A
+ 0126 5004              mov A,4
+ 0128 08                push A
+ 0129 5000              mov A,0
+ 012B 08                push A
+ 012C 08                push A
+ 012D 08                push A
+ 012E 50FA              mov A,-6
+ 0130 08                push A
+ 0131 9EE0              xcall _Pmw_Signal_Generation
+ 0133 38F8              add SP,-8
+ 0135                   .dbline 47
+ 0135           ;                       break;
+ 0135 802F              xjmp L8
+ 0137           L16:
+ 0137                   .dbline 49
+ 0137           ;               case 0x22:
+ 0137           ;                       Pmw_Signal_Generation(65,45);
+ 0137 5000              mov A,0
+ 0139 08                push A
+ 013A 08                push A
+ 013B 08                push A
+ 013C 502D              mov A,45
+ 013E 08                push A
+ 013F 5000              mov A,0
+ 0141 08                push A
+ 0142 08                push A
+ 0143 08                push A
+ 0144 5041              mov A,65
+ 0146 08                push A
+ 0147 9ECA              xcall _Pmw_Signal_Generation
+ 0149 38F8              add SP,-8
+ 014B                   .dbline 50
+ 014B           ;                       break;
+ 014B 8019              xjmp L8
+ 014D           L17:
+ 014D                   .dbline 52
+ 014D           ;               case 0x21:
+ 014D           ;                       Pmw_Signal_Generation(65250,3000);
+ 014D 5000              mov A,0
+ 014F 08                push A
+ 0150 08                push A
+ 0151 500B              mov A,11
+ 0153 08                push A
+ 0154 50B8              mov A,-72
+ 0156 08                push A
+ 0157 5000              mov A,0
+ 0159 08                push A
+ 015A 08                push A
+ 015B 50FE              mov A,-2
+ 015D 08                push A
+ 015E 50E2              mov A,-30
+ 0160 08                push A
+ 0161 9EB0              xcall _Pmw_Signal_Generation
+ 0163 38F8              add SP,-8
+ 0165                   .dbline 53
+ 0165           ;                       break;
+ 0165           L7:
+ 0165           L8:
+ 0165                   .dbline 57
+ 0165           ;       }
+ 0165           ;       
+ 0165           ;     
+ 0165           ; }
+ 0165           L5:
+ 0165                   .dbline 28
+ 0165 8ED8              xjmp L4
+ 0167           X0:
+ 0167                   .dbline -2
+ 0167           L3:
+ 0167 38FE              add SP,-2
+ 0169 20                pop X
+ 016A                   .dbline 0 ; func end
+ 016A 8FFF              jmp .
+ 016C                   .dbend

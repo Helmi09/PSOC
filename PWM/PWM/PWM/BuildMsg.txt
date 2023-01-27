@@ -1,0 +1,24 @@
+Starting MAKE...
+creating project.mk 
+
+lib/psocconfig.asm
+
+lib/psocconfigtbl.asm
+
+lib/pwm16_1.asm
+
+lib/pwm16_1int.asm
+
+./boot.asm
+
+Linking..
+
+  ROM 6% full. 848 out of 16384 bytes used (does not include absolute areas).
+
+  RAM 2% full. 4 bytes used (does not include stack usage).
+
+Built with ICCM8C STD V7.05.00
+
+ 
+PWM - 0 error(s) 0 warning(s) 22:44:32
+
