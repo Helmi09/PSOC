@@ -1,0 +1,252 @@
+                        .module main.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile ./main.c
+ 0000                   .dbfile C:\Users\revecom\Desktop\PSOC\TestLed4\TestLed4\TestLed4\main.c
+ 0000                   .dbfunc e main _main fV
+ 0000           ;            tmp -> X+6
+ 0000           ;            val -> X+2
+ 0000           ;              s -> X+0
+ 0000           _main::
+ 0000                   .dbline -1
+ 0000 10                push X
+ 0001 4F                mov X,SP
+ 0002 3808              add SP,8
+ 0004                   .dbline 12
+ 0004           ; //----------------------------------------------------------------------------
+ 0004           ; // C main line
+ 0004           ; //----------------------------------------------------------------------------
+ 0004           ; 
+ 0004           ; #include <m8c.h>        // part specific constants and macros
+ 0004           ; #include "PSoCAPI.h"    // PSoC API definitions for all User Modules
+ 0004           ; #include <stdlib.h>
+ 0004           ; #include <string.h>
+ 0004           ; 
+ 0004           ; 
+ 0004           ; void main(void)
+ 0004           ; {
+ 0004                   .dbline 19
+ 0004           ;       // M8C_EnableGInt ; // Uncomment this line to enable Global Interrupts
+ 0004           ;       // Insert your main routine code here.
+ 0004           ; char *s;
+ 0004           ; int tmp;
+ 0004           ; float val;
+ 0004           ; extern int DELSIG11_1_iResult ;
+ 0004           ; LED_BL_Start();
+ 0004 10                push X
+ 0005 7C0000            xcall _LED_BL_Start
+ 0008                   .dbline 20
+ 0008           ; LED_BL_Switch(1);
+ 0008 5001              mov A,1
+ 000A 7C0000            xcall _LED_BL_Switch
+ 000D                   .dbline 21
+ 000D           ; LCD_1_Start();
+ 000D 7C0000            xcall _LCD_1_Start
+ 0010                   .dbline 22
+ 0010           ; DELSIG11_1_Start(DELSIG11_1_HIGHPOWER);
+ 0010 5003              mov A,3
+ 0012 7C0000            xcall _DELSIG11_1_Start
+ 0015 20                pop X
+ 0016 8103              xjmp L3
+ 0018           L2:
+ 0018                   .dbline 23
+ 0018           ; while (1){
+ 0018                   .dbline 24
+ 0018           ;       DELSIG11_1_StartAD(); //: activer et initialiser le temporisateur du convertisseur
+ 0018 10                push X
+ 0019 7C0000            xcall _DELSIG11_1_StartAD
+ 001C 20                pop X
+ 001D           L5:
+ 001D                   .dbline 25
+ 001D           ;       while ( ! DELSIG11_1_fIsDataAvailable() );// vérifier la disponibilité d’une donnée valide
+ 001D           L6:
+ 001D                   .dbline 25
+ 001D 10                push X
+ 001E 7C0000            xcall _DELSIG11_1_fIsDataAvailable
+ 0021 20                pop X
+ 0022 3900              cmp A,0
+ 0024 AFF8              jz L5
+ 0026                   .dbline 26
+ 0026           ;       LCD_1_Position(0,0);
+ 0026 10                push X
+ 0027 5000              mov A,0
+ 0029 5700              mov X,0
+ 002B 7C0000            xcall _LCD_1_Position
+ 002E                   .dbline 27
+ 002E           ;       LCD_1_PrCString("Valeur_En_Volt");
+ 002E 5000              mov A,>L8
+ 0030 08                push A
+ 0031 5000              mov A,<L8
+ 0033 5C                mov X,A
+ 0034 18                pop A
+ 0035 7C0000            xcall _LCD_1_PrCString
+ 0038                   .dbline 28
+ 0038           ;       DELSIG11_1_iGetData();         //getting data value , a fct that will store it in global variable DELSIG11_1_iResult
+ 0038 7C0000            xcall _DELSIG11_1_iGetData
+ 003B 20                pop X
+ 003C                   .dbline 29
+ 003C           ;       val=((DELSIG11_1_iResult+1024)*5.0)/2048.0;
+ 003C 5101              mov A,[_DELSIG11_1_iResult+1]
+ 003E 0100              add A,0
+ 0040 5300              mov [__r1],A
+ 0042 5100              mov A,[_DELSIG11_1_iResult]
+ 0044 0904              adc A,4
+ 0046 5F0000            mov [__r3],[__r1]
+ 0049 5300              mov [__r2],A
+ 004B 470080            tst [__r2],-128
+ 004E A009              jz X1
+ 0050 5500FF            mov [__r1],-1
+ 0053 5500FF            mov [__r0],-1
+ 0056 8007              jmp X2
+ 0058           X1:
+ 0058 550000            mov [__r1],0
+ 005B 550000            mov [__r0],0
+ 005E           X2:
+ 005E 5100              mov A,[__r0]
+ 0060 08                push A
+ 0061 5100              mov A,[__r1]
+ 0063 08                push A
+ 0064 5100              mov A,[__r2]
+ 0066 08                push A
+ 0067 5100              mov A,[__r3]
+ 0069 08                push A
+ 006A 7C0000            xcall __long2fp
+ 006D 18                pop A
+ 006E 5300              mov [__r3],A
+ 0070 18                pop A
+ 0071 5300              mov [__r2],A
+ 0073 18                pop A
+ 0074 5300              mov [__r1],A
+ 0076 18                pop A
+ 0077 08                push A
+ 0078 5100              mov A,[__r1]
+ 007A 08                push A
+ 007B 5100              mov A,[__r2]
+ 007D 08                push A
+ 007E 5100              mov A,[__r3]
+ 0080 08                push A
+ 0081 5040              mov A,64
+ 0083 08                push A
+ 0084 50A0              mov A,-96
+ 0086 08                push A
+ 0087 5000              mov A,0
+ 0089 08                push A
+ 008A 08                push A
+ 008B 7C0000            xcall __fpmul
+ 008E 18                pop A
+ 008F 5300              mov [__r3],A
+ 0091 18                pop A
+ 0092 5300              mov [__r2],A
+ 0094 18                pop A
+ 0095 5300              mov [__r1],A
+ 0097 18                pop A
+ 0098 5300              mov [__r0],A
+ 009A 38FC              add SP,-4
+ 009C 5045              mov A,69
+ 009E 08                push A
+ 009F 5000              mov A,0
+ 00A1 08                push A
+ 00A2 08                push A
+ 00A3 08                push A
+ 00A4 5100              mov A,[__r0]
+ 00A6 08                push A
+ 00A7 5100              mov A,[__r1]
+ 00A9 08                push A
+ 00AA 5100              mov A,[__r2]
+ 00AC 08                push A
+ 00AD 5100              mov A,[__r3]
+ 00AF 08                push A
+ 00B0 7C0000            xcall __fpdiv
+ 00B3 18                pop A
+ 00B4 5405              mov [X+5],A
+ 00B6 18                pop A
+ 00B7 5404              mov [X+4],A
+ 00B9 18                pop A
+ 00BA 5403              mov [X+3],A
+ 00BC 18                pop A
+ 00BD 5402              mov [X+2],A
+ 00BF 38FC              add SP,-4
+ 00C1                   .dbline 30
+ 00C1           ;       s=ftoa(val,&tmp);
+ 00C1 5A00              mov [__r1],X
+ 00C3 060006            add [__r1],6
+ 00C6 5100              mov A,[__r0]
+ 00C8 08                push A
+ 00C9 5100              mov A,[__r1]
+ 00CB 08                push A
+ 00CC 5202              mov A,[X+2]
+ 00CE 08                push A
+ 00CF 5203              mov A,[X+3]
+ 00D1 08                push A
+ 00D2 5204              mov A,[X+4]
+ 00D4 08                push A
+ 00D5 5205              mov A,[X+5]
+ 00D7 08                push A
+ 00D8 7C0000            xcall _ftoa
+ 00DB 5100              mov A,[__r1]
+ 00DD 5401              mov [X+1],A
+ 00DF 5100              mov A,[__r0]
+ 00E1 5400              mov [X+0],A
+ 00E3                   .dbline 31
+ 00E3           ;       if ( strlen(s) > 4 ) {
+ 00E3 5200              mov A,[X+0]
+ 00E5 08                push A
+ 00E6 5201              mov A,[X+1]
+ 00E8 08                push A
+ 00E9 7C0000            xcall _strlen
+ 00EC 38F8              add SP,-8
+ 00EE 5004              mov A,4
+ 00F0 1200              sub A,[__r1]
+ 00F2 5000              mov A,0
+ 00F4 1A00              sbb A,[__r0]
+ 00F6 D00B              jnc L9
+ 00F8           X3:
+ 00F8                   .dbline 32
+ 00F8           ;             s[4]='/0';
+ 00F8                   .dbline 32
+ 00F8 5201              mov A,[X+1]
+ 00FA 0104              add A,4
+ 00FC 5300              mov [__r1],A
+ 00FE 502F              mov A,47
+ 0100 3F00              mvi [__r1],A
+ 0102                   .dbline 33
+ 0102           ;                            }
+ 0102           L9:
+ 0102                   .dbline 34
+ 0102           ;       LCD_1_Position(0,1);
+ 0102 10                push X
+ 0103 5701              mov X,1
+ 0105 5000              mov A,0
+ 0107 7C0000            xcall _LCD_1_Position
+ 010A 20                pop X
+ 010B                   .dbline 35
+ 010B           ;       LCD_1_PrString(s);
+ 010B 10                push X
+ 010C 5200              mov A,[X+0]
+ 010E 08                push A
+ 010F 5201              mov A,[X+1]
+ 0111 5C                mov X,A
+ 0112 18                pop A
+ 0113 7C0000            xcall _LCD_1_PrString
+ 0116                   .dbline 36
+ 0116           ;       DELSIG11_1_ClearFlag();
+ 0116 7C0000            xcall _DELSIG11_1_ClearFlag
+ 0119 20                pop X
+ 011A                   .dbline 37
+ 011A           ; }
+ 011A           L3:
+ 011A                   .dbline 23
+ 011A 8EFD              xjmp L2
+ 011C           X0:
+ 011C                   .dbline -2
+ 011C           L1:
+ 011C 38F8              add SP,-8
+ 011E 20                pop X
+ 011F                   .dbline 0 ; func end
+ 011F 8FFF              jmp .
+ 0121                   .dbsym l tmp 6 I
+ 0121                   .dbsym l val 2 D
+ 0121                   .dbsym l s 0 pc
+ 0121                   .dbend
+                        .area lit(rom, con, rel, lit)
+ 0000           L8:
+ 0000 56616C6575725F456E5F566F6C7400    .byte 'V,'a,'l,'e,'u,'r,95,'E,'n,95,'V,'o,'l,'t,0

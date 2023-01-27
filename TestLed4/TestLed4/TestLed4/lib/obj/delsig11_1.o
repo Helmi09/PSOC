@@ -1,0 +1,120 @@
+XH
+H 2 areas 25 global symbols
+M delsig11_1.asm
+S DELSIG11_1_bfStatus Ref0000
+S DELSIG11_1_fState Ref0000
+S DELSIG11_1_iResult Ref0000
+A text size 0 flags 0
+dbfile lib/delsig11_1.asm
+dbfunc 0 ? 0 I
+dbfile DELSIG11_1.inc
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C27~1/m8c.inc
+dbfunc 0 ? 0 I
+dbfile ./lib/DELSIG11_1.inc
+dbfunc 0 ? 0 I
+dbfile lib/delsig11_1.asm
+dbfunc 0 ? 0 I
+dbfile memory.inc
+dbfunc 0 ? 0 I
+dbfile lib/delsig11_1.asm
+dbfunc 0 ? 0 I
+dbfile C:/PROGRA~2/Cypress/PSOCDE~1/5.4/Common/CYPRES~1/tools/include/CY8C27~1/m8c.inc
+dbfunc 0 ? 0 I
+A UserModules size 60 flags 0
+dbfile lib/delsig11_1.asm
+dbfunc 0 ? 0 I
+dbline 59 0
+dbline 5A 1
+dbline 5B 3
+dbline 5C 4
+dbline 5D 6
+dbline 5E 8
+dbline 5F A
+dbline 60 C
+dbline 62 D
+dbline 79 E
+dbline 7B 11
+dbline 2 12
+dbline 98 14
+dbline 2 17
+dbline 9B 19
+dbline 2 1C
+dbline 9D 1F
+dbline A0 22
+dbline A3 25
+dbline A4 28
+dbline A6 2B
+dbline 2 2C
+dbline C1 2E
+dbline 2 31
+dbline C4 33
+dbline 2 36
+dbline C7 39
+dbline C9 3C
+dbline CB 3F
+dbline E7 40
+dbline E9 42
+dbline 107 43
+dbline 2 46
+dbline 109 49
+dbline 10A 4B
+dbline 2 4D
+dbline 10D 50
+dbline 2 51
+dbline 12C 54
+dbline 12D 56
+dbline 2 58
+dbline 130 5B
+dbline 14A 5C
+dbline 14C 5F
+S DELSIG11_1_iGetData Def0051
+S _DELSIG11_1_Stop Def000E
+S DELSIG11_1_Start Def0000
+S DELSIG11_1_fIsDataAvailable Def0040
+S $sb$DELSIG11_1_iGetData Def0051
+S $se$DELSIG11_1_iGetData Def005C
+S $sb$DELSIG11_1_Start Def0000
+S DELSIG11_1_StopAD Def002C
+S $se$DELSIG11_1_Start Def000E
+S DELSIG11_1_SetPower Def0000
+S $sb$DELSIG11_1_fIsDataAvailable Def0040
+S $se$DELSIG11_1_fIsDataAvailable Def0043
+S $sb$DELSIG11_1_StopAD Def002C
+S $se$DELSIG11_1_StopAD Def0040
+S DELSIG11_1_ClearFlag Def005C
+S _DELSIG11_1_iGetData Def0051
+S DELSIG11_1_iGetDataClearFlag Def0043
+S _DELSIG11_1_Start Def0000
+S _DELSIG11_1_fIsDataAvailable Def0040
+S $sb$DELSIG11_1_ClearFlag Def005C
+S $se$DELSIG11_1_ClearFlag Def0060
+S $sb$DELSIG11_1_iGetDataClearFlag Def0043
+S $se$DELSIG11_1_iGetDataClearFlag Def0051
+S _DELSIG11_1_StopAD Def002C
+S DELSIG11_1_StartAD Def0012
+S _DELSIG11_1_SetPower Def0000
+S DELSIG11_1_Stop Def000E
+S $sb$DELSIG11_1_StartAD Def0012
+S $se$DELSIG11_1_StartAD Def002C
+S _DELSIG11_1_ClearFlag Def005C
+S $sb$DELSIG11_1_Stop Def000E
+S _DELSIG11_1_iGetDataClearFlag Def0043
+S $se$DELSIG11_1_Stop Def0012
+S _DELSIG11_1_StartAD Def0012
+T 00 00 4F 21 03 08 5D 83 21 FC 2B 00 60 83 18 7F
+R 00 00 00 01
+T 00 0E 41 83 FC 7F 71 10 41 E7 3F 70 EF 55 00 00
+R 00 00 00 01 03 0E 00 01
+T 00 1B 00 43 E1 01 41 83 EF 41 82 DF 62 21 FF 62
+R 00 00 00 01
+T 00 29 23 01 7F 71 10 43 E7 80 70 EF 62 23 00 41
+R 00 00 00 01
+T 00 37 E1 FE 43 82 20 43 83 10 7F 51 00 00 7F 26
+R 00 00 00 01 03 0C 00 00
+T 00 44 00 00 EF 41 E1 FE 58 00 00 51 00 01 43 E1
+R 00 00 00 01 03 02 00 00 03 09 00 02 03 0C 00 02
+T 00 4F 01 7F 41 E1 FE 58 00 00 51 00 01 43 E1 01
+R 00 00 00 01 03 08 00 02 03 0B 00 02
+T 00 5B 7F 26 00 00 EF 7F
+R 00 00 00 01 03 04 00 00

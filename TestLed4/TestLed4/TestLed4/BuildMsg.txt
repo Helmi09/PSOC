@@ -1,0 +1,5 @@
+Compiling...
+creating project.mk 
+
+main.o - 0 error(s) 0 warning(s)  20:42:25
+
